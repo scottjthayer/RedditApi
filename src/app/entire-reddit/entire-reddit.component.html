@@ -1,6 +1,10 @@
-<div *ngFor="let A of RedditList">
-    <p>{{ A.title }}</p>
-    <p><img src="{{ A.img }}"></p>
-    <p><a href="{{ A.url }}">See Post</a></p>
-    <p>{{ A.author }}</p>
-</div>
+<form #redditForm="ngForm" (ngSubmit)="SearchReddit(redditForm)">
+  <input name="SubReddit" ngModel placeholder="Please enter a subreddit" />
+  <button>Search</button>
+</form>
+<h1 *ngIf="RedditList.length == 0">That was not a subreddit</h1>
+
+<app-single-reddit
+  *ngFor="let P of RedditList"
+  [PostInfo]="P"
+></app-single-reddit>

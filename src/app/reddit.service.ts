@@ -5,11 +5,11 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class RedditService {
-  apiUrl: string = 'https://www.reddit.com/r/aww/.json';
+  apiUrl: string = 'https://www.reddit.com/r/'; //aww/.json
 
   constructor(private http: HttpClient) {}
 
-  getReddit(): any {
-    return this.http.get(this.apiUrl);
+  getReddit(subreddit:string): any {
+    return this.http.get(this.apiUrl + subreddit + "/.json");
   }
 }
